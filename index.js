@@ -33,6 +33,9 @@ const servidor= new ApolloServer({
 });
 
 //Levantamos el servidor
-servidor.listen().then(({url})=>{
+servidor.listen({
+    port: process.env.PORT || 4000,
+    host: '0.0.0.0'
+}).then(({url})=>{
     console.log(`Base de datos conectada en la url: ${url}`);
 })
