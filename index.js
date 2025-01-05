@@ -32,18 +32,7 @@ const servidor= new ApolloServer({
     }
 });
 
-//Manejo de señales de terminación
-process.on('SIGTERM', () => {
-    console.log('Recibida señal SIGTERM - Cerrando servidor gracefully');
-    servidor.stop().then(() => {
-        process.exit(0);
-    });
-});
-
 //Levantamos el servidor
-servidor.listen({
-    port: process.env.PORT || 4000,
-    host: '0.0.0.0'
-}).then(({url})=>{
+servidor.listen().then(({url})=>{
     console.log(`Base de datos conectada en la url: ${url}`);
 })
